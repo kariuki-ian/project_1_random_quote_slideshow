@@ -25,17 +25,26 @@ let getRandomQuote = ()=>{
  * `printQuote` function
 ***/
 let printQuote = ()=>{
+    //get the quote index from getRandomQuote() function
     chosen = getRandomQuote();
+
+    //Check whether the array has citation and year property
+    //Store the return value in a variable
     let exist = chosen.hasOwnProperty("citation");
     let exist1 = chosen.hasOwnProperty("year");
+
+    //create a string variable to implement to the HTML
     let str ="";
     
+    //Create an element of the first <p></p> tag
     let new_element = document.createElement("p");
     new_element.className = "quote";
     new_element.textContent = chosen.quote;
     
+    //Append the outerHtml to the string
 str += `${new_element.outerHTML}`;
 
+ //Create an element of the second <p></p> tag
     let new_element2 = document.createElement("p");
     new_element2.className = "source";
     new_element2.textContent = chosen.source;
@@ -43,7 +52,8 @@ str += `${new_element.outerHTML}`;
     {
         let new_element3 = document.createElement("span");
         new_element3.className = "citation";
-        new_element3.textContent = chosen.citation;        
+        new_element3.textContent = chosen.citation;
+       //Append the element to the 2nd p element         
         new_element2.appendChild(new_element3);
      
     }
@@ -51,13 +61,16 @@ str += `${new_element.outerHTML}`;
     {
         let new_element4 = document.createElement("span");
         new_element4.className = "citation";
-        new_element4.textContent = chosen.year;        
+        new_element4.textContent = chosen.year;   
+        //Append the element to the 2nd p element        
         new_element2.appendChild(new_element4);
         
     }
   
     let x =document.getElementById("quote-box");
+     //Append the outerHtml to the string
    str += `${new_element2.outerHTML}`;
+   //Add the string variable to the HTML
 x.innerHTML = str;
  
      
